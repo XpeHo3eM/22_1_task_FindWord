@@ -10,14 +10,19 @@ int main()
     std::fstream file;
     file.open("words.txt");
 
-    std::string temp;
-    int count = 0;
-    while (!file.eof())
+    if (file.is_open())
     {
-        file >> temp;
-        if (word == temp)
-            ++count;
+        std::string temp;
+        int count = 0;
+        while (!file.eof())
+        {
+            file >> temp;
+            if (word == temp)
+                ++count;
+        }
+        std::cout << count << std::endl;
+        file.close();
     }
-    std::cout << count << std::endl;
-    file.close();
+    else
+        std::cout << "File not found" << std::endl;
 }
